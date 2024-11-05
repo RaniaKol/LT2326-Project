@@ -1,0 +1,74 @@
+overwrite: False
+
+### vocab:
+src_vocab: "/mnt/c/Users/rania/Documents/lt2326_project/data/vocab20_grc16.txt"
+tgt_vocab: "/mnt/c/Users/rania/Documents/lt2326_project/data/vocab20_en16.txt"
+src_vocab_size: 16000
+tgt_vocab_size: 16000
+
+### Transform related opts:
+#### Subword
+src_subword_model: "/mnt/c/Users/rania/Documents/lt2326_project/data/sub20_model16_grc.txt"
+tgt_subword_model: "/mnt/c/Users/rania/Documents/lt2326_project/data/sub20_model16_en.txt"
+src_subword_type: "bpe"
+tgt_subword_type: "bpe"
+
+
+# Corpus opts:
+data:
+    corpus_1:
+        path_src: "/mnt/c/Users/rania/Documents/lt2326_project/data/sub20_train16_grc.txt"
+        path_tgt: "/mnt/c/Users/rania/Documents/lt2326_project/data/sub20_train16_en.txt"
+    valid:
+        path_src: "/mnt/c/Users/rania/Documents/lt2326_project/data/sub20_valid16_grc.txt"
+        path_tgt: "/mnt/c/Users/rania/Documents/lt2326_project/data/sub20_valid16_en.txt"
+
+#seed: 3435
+
+# Batching
+num_workers: 0  # Default: 2, set to 0 when RAM out of memory
+batch_type: "tokens" # default
+batch_size: 4096  # 64 default
+
+## Specify models
+save_model: "/mnt/c/Users/rania/Documents/lt2326_project/demo/model10"
+save_checkpoint_steps: 4000
+early_stopping: 3
+train_steps: 4000 # default
+#valid_steps: 1000 # default
+#warmup_steps: 8000
+normalization: "tokens"
+weight: 1
+log_file: "/mnt/c/Users/rania/Documents/lt2326_project/logs1.logs"
+
+## Optimization options
+
+optim: "adam"  # default
+learning_rate: 2 # default (Recommended settings: sgd = 1, adagrad = 0.1, "adadelta = 1, adam = 0.001")
+adam_beta2: 0.998
+decay_method: "noam"
+max_grad_norm: 0
+max_generator_batches: 2
+accum_count: [2]
+accum_steps: [0]
+param_init_glorot: true
+
+## Model options
+
+encoder_type: transformer
+decoder_type: transformer
+position_encoding: true
+enc_layers: 6
+dec_layers: 6
+heads: 8
+hidden_size: 512
+word_vec_size: 512
+transformer_ff: 2048
+label_smoothing: 0.1
+dropout_steps: [0]
+dropout: [0.1]
+attention_dropout: [0.1]
+
+## Specify GPU usage
+gpu_ranks: 0
+world_size: 1
