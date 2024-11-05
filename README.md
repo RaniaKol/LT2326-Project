@@ -6,8 +6,8 @@ There is a configuration file with the hyperparameters used for training the mod
 There is also a file with the data. 
 In the sub20_model..txt are the models applied to train,test and validation datasets for the sudword tokenization. Later on the vocabularies where generated. This code can be found on subword.ipynb
 For splitting the data run: python3 splitting_train_test_valid.py
-There are also two python scripts for counting the enaglish and greek words on each datasets, but also in total.
-To run those scripts use: python3 counting_words_en/grc.py   
+There are also two python scripts for counting the English and Greek words on each datasets, but also in total.
+To run those scripts use: python3 count_en/grc.py   
 
 To use OpenNMT-py (pytorch) first it needs to be installed:   pip install OpenNMT-py
 
